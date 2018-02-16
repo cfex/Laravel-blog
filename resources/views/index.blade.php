@@ -22,7 +22,9 @@
 		@endforeach
 	@else
 		<p>Be the first to set up a topic!</p>
-		<a href="/posts/create" class="btn btn-primary">New+</a>
+		<a href="/posts/create" class="btn btn-primary">
+			New+
+		</a>
 	@endif
 
 @endsection
