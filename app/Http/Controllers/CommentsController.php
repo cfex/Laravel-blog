@@ -20,14 +20,14 @@ class CommentsController extends Controller
     public function store(Posts $post)
     {
 
-        $post->addComment(request(
-					[
-						'content',
-						'user_id'
-					]
-				));
+      $post->addComment(request(
+				[
+					'content',
+					'user_id'
+				]
+			));
 
-				return back();
+			return back();
 
     }
 
@@ -39,8 +39,10 @@ class CommentsController extends Controller
      */
     public function destroy(Comments $comment)
     {
-				Comments::destroy($comment->id);
 
-				return back();
+			Comments::destroy($comment->id);
+
+			return back();
+
     }
 }

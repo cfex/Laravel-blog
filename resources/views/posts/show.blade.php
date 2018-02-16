@@ -25,49 +25,64 @@
 
 	<p>Comments:</p>
 
-	@foreach ($post->comments as $comment)
-		<div class="list-group">
-		 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-		    <div class="d-flex w-100 justify-content-between">
-		      <h5 class="mb-1"><strong>{{ $comment->user->name }}</strong></h5>
-		      <small>{{ $comment->created_at->diffForHumans() }}</small>
-		    </div>
-		    <p class="mb-1">{{ $comment->content }}</p>
-				<br>
+		@foreach ($post->comments as $comment)
+			<div class="list-group">
+			 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h5 class="mb-1"><strong>{{ $comment->user->name }}</strong></h5>
+			      <small>{{ $comment->created_at->diffForHumans() }}</small>
+			    </div>
+			    <p class="mb-1">{{ $comment->content }}</p>
+					<br>
 
-				@if (auth()->id() == $comment->user_id)
+					@if (auth()->id() == $comment->user_id)
 
-					<form action="/posts/{{ $comment->id }}/comment" method="POST">
+						<form action="/posts/{{ $comment->id }}/comment" method="POST">
 
-							{{ method_field('DELETE') }}
-						 	{{ csrf_field() }}
+								{{ method_field('DELETE') }}
+							 	{{ csrf_field() }}
 
-							<div class="form-group">
-								<button type="submit" class="btn btn-sm btn-dark">Delete</button>
-							</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-sm btn-dark">Delete</button>
+								</div>
 
-					</form>
+						</form>
 
-				@endif
+					@endif
 
-		  </a>
-		</div>
-	@endforeach
+			  </a>
+			</div>
+		@endforeach
 
+		@guest
 
-	<form action="/posts/{{ $post->id }}/comments" method="POST">
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  <strong>Notice!</strong> You have to be logged in to comment on this post. <br>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
 
-		{{ csrf_field() }}
+				<a href="{{ route('login') }}"><button type="button" class="btn btn-outline-info">Login</button></a>
+				<a href="{{ route('register') }}"><button type="button" class="btn btn-outline-info">Register</button></a>
 
-	  <div class="form-group">
-	    <label for="content">Content</label>
-	    <textarea class="form-control" name="content" rows="6" placeholder="Content*" required></textarea>
-	  </div>
+			</div>
+			<p></p>
 
-		<div class="form-group">
-			<button type="submit" class="btn btn-primary btn-lg btn-block">Comment</button>
-		</div>
+		@else
+			<form action="/posts/{{ $post->id }}/comments" method="POST">
 
-	</form>
+				{{ csrf_field() }}
+
+			  <div class="form-group">
+			    <label for="content">Content</label>
+			    <textarea class="form-control" name="content" rows="6" placeholder="Content*" required></textarea>
+			  </div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-lg btn-block">Comment</button>
+				</div>
+
+			</form>
+		@endguest
 
 @endsection

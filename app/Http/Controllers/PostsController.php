@@ -11,7 +11,7 @@ class PostsController extends Controller
 		public function __construct()
 		{
 
-				$this->middleware('auth')->except(['index, show']);
+				$this->middleware('auth')->except('show');
 
 		}
 
@@ -38,7 +38,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+
+      return view('posts.create');
+
     }
 
     /**
@@ -56,7 +58,8 @@ class PostsController extends Controller
 				'user_id' => auth()->id()
 			]);
 
-				return redirect('/');
+			return redirect('/');
+
     }
 
     /**
@@ -67,7 +70,9 @@ class PostsController extends Controller
      */
     public function show(Posts $post)
     {
-        return view('posts.show', compact('post'));
+
+      return view('posts.show', compact('post'));
+
     }
 
     /**
@@ -105,5 +110,6 @@ class PostsController extends Controller
 			Posts::destroy($post->id);
 
 			return redirect("/posts");
+
     }
 }
