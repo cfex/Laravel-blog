@@ -20,6 +20,12 @@ class CommentsController extends Controller
     public function store(Posts $post)
     {
 
+			$this->validate(request(), [
+
+					'content' => 'required'
+
+			]);
+
       $post->addComment(request(
 				[
 					'content',

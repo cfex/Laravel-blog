@@ -52,11 +52,9 @@ class PostsController extends Controller
     public function store()
     {
 
-			Posts::create([
-				'title' => request('title'),
-				'content' => request('content'),
-				'user_id' => auth()->id()
-			]);
+			auth()->user()->publish(
+				new Posts(request(['title', 'content']))
+			);
 
 			return redirect('/');
 
