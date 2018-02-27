@@ -1,0 +1,19 @@
+<?php
+////////////////////////////////////////////////////////////////
+//											Jevtic Nenad													//
+//												TODO list														//
+//												27/2/2018														//
+////////////////////////////////////////////////////////////////
+	/*
+	* @todo
+	* Dashbord (SuperAdmin,Admin)
+	* Assign roles
+	* User Profile page (update/delete)
+	* Maybe? EXP
+	* Up Votes
+	* Posts (tags, category, image, video..)
+	* Index page
+	* Show page
+	* SLUG
+	* API register (github, facebook...)
+	*/
