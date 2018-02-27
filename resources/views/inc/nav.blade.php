@@ -1,54 +1,63 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-		<div class="container">
-				<a class="navbar-brand" href="{{ url('/') }}">
-						{{ config('app.name', 'Laravel') }}
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<!-- Left Side Of Navbar -->
-						<ul class="navbar-nav mr-auto">
-
-						</ul>
-
-						<!-- Right Side Of Navbar -->
-						<ul class="navbar-nav ml-auto">
-								<!-- Authentication Links -->
-								@guest
-										<li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-										<li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-								@else
-										<li>
-											<a href="/posts/create">
-												<button type="button" class="btn btn-muted btn-md">
-													New+
-												</button>
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="/posts">Posts</a>
-										</li>
-										<li class="nav-item dropdown">
-												<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														{{ Auth::user()->name }} <span class="caret"></span>
-												</a>
-												<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-														<a class="dropdown-item" href="{{ route('logout') }}"
-															 onclick="event.preventDefault();
-																						 document.getElementById('logout-form').submit();">
-																Logout
-														</a>
-
-														<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-																@csrf
-														</form>
-												</div>
-										</li>
-
-								@endguest
-						</ul>
-				</div>
+<nav class="navbar is-transparent is-warning">
+	<div class="navbar-brand">
+		<a class="navbar-item" href="/">
+      <img src="{{asset('images/blog.logo.png')}}" alt="Blog logo" width="112" height="28">
+    </a>
+		<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+			<span></span>
+			<span></span>
+			<span></span>
 		</div>
+	</div>
+
+	<div id="navbarExampleTransparentExample" class="navbar-menu">
+		<div class="navbar-start">
+			<a class="navbar-item" href="/">
+
+      </a>
+		</div>
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<div class="field is-grouped">
+					@guest
+					<a class="navbar-item" href="{{route('login')}}">
+		        Login
+		      </a>
+					<a class="navbar-item" href="{{route('register')}}">
+		        Join now!
+		      </a>
+					@endguest
+					@auth
+						<div class="dropdown is-hoverable">
+						  <div class="dropdown-trigger">
+						    <button class="button is-primary is-rounded is-outlined" aria-haspopup="true" aria-controls="dropdown-menu4">
+						      <span>Welcome, {{ auth()->user()->name }}</span>
+						      <span class="icon is-small">
+						        <i class="fa fas fa-angle-down" aria-hidden="true"></i>
+						      </span>
+						    </button>
+						  </div>
+						  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+						    <div class="dropdown-content">
+						      <div class="dropdown-item">
+										<a href="{{route('logout')}}" class="navbar-item" onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+			                <span class="icon">
+			                  <i class="fa fa-fw fa-sign-out m-r-5"></i>
+			                </span>
+			                Logout
+			              </a>
+										@include('inc.logout.logout')
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+					@endauth
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
 </nav>

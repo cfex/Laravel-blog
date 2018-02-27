@@ -15,9 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-
-    	$this->middleware('auth')->except('index');
-
+        $this->middleware('auth')->except('index');
     }
 
     /**
@@ -27,10 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posts = Posts::orderBy('created_at', 'DESC')->get();
 
-			$posts = Posts::orderBy('created_at', 'DESC')->get();
-
-      return view('index', compact('posts'));
-
+        return view('index', compact('posts'));
     }
 }

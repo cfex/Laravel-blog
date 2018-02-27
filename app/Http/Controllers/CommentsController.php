@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Comments;
 use App\Posts;
 
-
 class CommentsController extends Controller
 {
-
     /**
      * Store a newly created resource in storage.
      *
@@ -19,22 +16,18 @@ class CommentsController extends Controller
      */
     public function store(Posts $post)
     {
+        $this->validate(request(), [
+                    'content' => 'required'
+            ]);
 
-			$this->validate(request(), [
+        $post->addComment(request(
+                [
+                    'content',
+                    'user_id'
+                ]
+            ));
 
-					'content' => 'required'
-
-			]);
-
-      $post->addComment(request(
-				[
-					'content',
-					'user_id'
-				]
-			));
-
-			return back();
-
+        return back();
     }
 
     /**
@@ -45,10 +38,8 @@ class CommentsController extends Controller
      */
     public function destroy(Comments $comment)
     {
+        Comments::destroy($comment->id);
 
-			Comments::destroy($comment->id);
-
-			return back();
-
+        return back();
     }
 }

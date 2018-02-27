@@ -7,13 +7,10 @@ use App\Posts;
 
 class PostsController extends Controller
 {
-
-		public function __construct()
-		{
-
-				$this->middleware('auth')->except('show');
-
-		}
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show');
+    }
 
     /**
      * Display a listing of the resource.
@@ -22,13 +19,12 @@ class PostsController extends Controller
      */
     public function index()
     {
-
-				//all posts for specific user
+        //all posts for specific user
         $posts = Posts::where('user_id', auth()->id())
-									->latest()
-									->get();
-					// return $posts;
-				return view('posts.index', compact('posts'));
+                                ->latest()
+                                ->get();
+        // return $posts;
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -38,9 +34,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-
-      return view('posts.create');
-
+        return view('posts.create');
     }
 
     /**
@@ -51,13 +45,11 @@ class PostsController extends Controller
      */
     public function store()
     {
+        auth()->user()->publish(
+                new Posts(request(['title', 'content']))
+            );
 
-			auth()->user()->publish(
-				new Posts(request(['title', 'content']))
-			);
-
-			return redirect('/');
-
+        return redirect('/');
     }
 
     /**
@@ -68,9 +60,7 @@ class PostsController extends Controller
      */
     public function show(Posts $post)
     {
-
-      return view('posts.show', compact('post'));
-
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -104,10 +94,8 @@ class PostsController extends Controller
      */
     public function destroy(Posts $post)
     {
+        Posts::destroy($post->id);
 
-			Posts::destroy($post->id);
-
-			return redirect("/posts");
-
+        return redirect("/posts");
     }
 }

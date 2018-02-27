@@ -14,19 +14,14 @@
 
 Auth::routes();
 
-
 Route::get('/', 'HomeController@index');
 
-Route::get('/posts', 'PostsController@index');
-
-Route::get('/posts/create', 'PostsController@create');
-
-Route::post('/posts', 'PostsController@store');
-
-Route::get('posts/{post}', 'PostsController@show');
-
-Route::post('posts/{post}/comments', 'CommentsController@store');
-
-Route::delete('posts/{post}', 'PostsController@destroy');
-
-Route::delete('posts/{comment}/comment', 'CommentsController@destroy');
+Route::prefix('posts')->group(function () {
+    Route::get('/posts', 'PostsController@index');
+    Route::get('/create', 'PostsController@create');
+    Route::post('/', 'PostsController@store');
+    Route::get('/{post}', 'PostsController@show');
+    Route::post('/{post}/comments', 'CommentsController@store');
+    Route::delete('/{post}', 'PostsController@destroy');
+    Route::delete('/{comment}/comment', 'CommentsController@destroy');
+});

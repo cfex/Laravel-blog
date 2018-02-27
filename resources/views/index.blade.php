@@ -2,23 +2,34 @@
 
 @section('content')
 
-	@if(Auth::user())
-		<h1>Welcome, {{ Auth::user()->name }}</h1>
-	@endif
-
 	@if(count($posts))
 		@foreach ($posts as $post)
-			<div class="card">
-			  <div class="card-body">
-			    <blockquote class="blockquote mb-0">
-						<h2></he><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h2>
-			      <p>{{ str_limit($post->content, 250) }}</p>
-			      <footer class="blockquote-footer">Author: <strong>{{ $post->user->name }}</strong></footer>
-						<cite title="Source Title"> <small>{{ $post->created_at->diffForHumans() }}</small></cite>
-					</blockquote>
-			  </div>
+			<div class="columns">
+				<div class="column is-three-fifths">
+					<div class="card">
+					  <header class="card-header">
+					    <p class="card-header-title">
+					      {{ $post->title }}
+					    </p>
+					    <a href="/posts/{{ $post->id }}" class="card-header-icon" aria-label="more options">
+								Read more
+					      <span class="icon">
+									<i class="fa fas fa-angle-double-right"></i>
+								</span>
+					    </a>
+					  </header>
+					  <div class="card-content">
+					    <div class="content">
+					      {{ $post->content }}
+								<br>
+					      <a href="#">@blogapp</a> <a href="#">#css</a> <a href="#">#responsive</a>
+					      <br>
+					      <time datetime="2016-1-1">{{ $post->created_at->diffForHumans()}}</time>
+					    </div>
+					  </div>
+					</div>
+				</div>
 			</div>
-			<br />
 		@endforeach
 	@else
 		<p>Be the first to set up a topic!</p>
