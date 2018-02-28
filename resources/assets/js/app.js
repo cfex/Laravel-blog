@@ -6,15 +6,14 @@
  */
 
 require('./bootstrap');
+import Vue from 'vue';
 import Buefy from 'buefy';
 
-window.Vue = require('vue');
+Vue.use(Buefy, { defaultIconPack: 'fa' });
+window.Vue = Vue;
 
-Vue.use(Buefy)
-
-let app = new Vue({
-	el: '#app',
-	data: {}
+var App = new Vue({
+   el: '#app'
 });
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));

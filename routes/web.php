@@ -19,9 +19,16 @@ Route::get('/', 'HomeController@index');
 Route::prefix('posts')->group(function () {
     Route::get('/posts', 'PostsController@index');
     Route::get('/create', 'PostsController@create');
-    Route::post('/', 'PostsController@store');
+    Route::post('/store', 'PostsController@store');
     Route::get('/{post}', 'PostsController@show');
     Route::post('/{post}/comments', 'CommentsController@store');
     Route::delete('/{post}', 'PostsController@destroy');
     Route::delete('/{comment}/comment', 'CommentsController@destroy');
+});
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/', 'AdminDashboard@index');
+		Route::get('/posts', 'AdminPosts@index');
+    Route::get('/users', 'AdminUsers@index');
+    Route::get('/{user}/profile', 'AdminUsers@show');
 });

@@ -30,6 +30,9 @@
 					<div class="control has-text-centered">
 					  <button class="button is-medium is-primary is-fullwidth is-rounded is-outlined">LogIn</button>
 					</div>
+	        <div class="field">
+	            <b-checkbox>Remember Me</b-checkbox>
+	        </div>
 				</form>
 			</div>
 		</div>

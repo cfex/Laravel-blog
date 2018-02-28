@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<form action="/posts" method="POST">
+	<form action="/posts/store" method="POST">
 
 		{{ csrf_field() }}
 
