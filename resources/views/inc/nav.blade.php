@@ -39,6 +39,9 @@
 						  </div>
 						  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
 						    <div class="dropdown-content">
+									<div class="dropdown-item">
+										<a href="/dashboard">Dashboard</a>
+									</div>
 						      <div class="dropdown-item">
 										<a href="{{route('logout')}}" class="navbar-item" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">

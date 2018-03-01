@@ -17,7 +17,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 
 Route::prefix('posts')->group(function () {
-    Route::get('/posts', 'PostsController@index');
+    Route::get('/', 'PostsController@index');
     Route::get('/create', 'PostsController@create');
     Route::post('/store', 'PostsController@store');
     Route::get('/{post}', 'PostsController@show');

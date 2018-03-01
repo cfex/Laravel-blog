@@ -2,6 +2,48 @@ body {
 	font-family: Roboto;
 }
 
+//
+.big-description {
+	background-image: url("/assets/img/idea_bg.png");
+	background-size: contain;
+	background-position: center;
+	background-attachment: fixed;
+	padding: 20px;
+	height: 500px;
+	z-index: -100;
+}
+
+.content {
+	text-align: center;
+
+	&.__title {
+		color: $green-color;
+		background-color: $backgoround-grey;
+		padding: 10px;
+		font-size: 3.6rem;
+	}
+
+	&.__paragraph {
+		color: #000;
+		background-color: $backgoround-grey;
+		line-height: 150%;
+		text-indent: 5px;
+		padding: 10px;
+		font-size: 1.5rem;
+	}
+}
+
+.form {
+	margin-top: 0;
+	background-color: $yellow-color;
+	text-align: center;
+}
+.submit-title {
+	color: #000;
+	padding: 10px;
+	margin: 0 0 30px;
+	font-size: 1.7rem;
+}
 
 // Admin Dashboard
 .menu {
