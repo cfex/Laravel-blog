@@ -17279,7 +17279,7 @@ label.panel-block:hover {
 }
 
 .card {
-  margin-top: 150px;
+  margin-top: 10px;
 }
 
 a.muted:hover {
@@ -17290,18 +17290,25 @@ a.muted:hover {
   margin-bottom: 0 !important;
 }
 
+.title {
+  color: #00D1B2 !important;
+}
+
 body {
   font-family: Roboto;
 }
 
-.big-description {
-  background-image: url("/assets/img/idea_bg.png");
+.idea-bg {
+  background-image: url("/images/idea_bg.jpg");
   background-size: contain;
   background-position: center;
   background-attachment: fixed;
+  z-index: -100;
+}
+
+.big-description {
   padding: 20px;
   height: 500px;
-  z-index: -100;
 }
 
 .content {
@@ -17321,7 +17328,7 @@ body {
   line-height: 150%;
   text-indent: 5px;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 3rem;
 }
 
 .form {

@@ -9,7 +9,7 @@
 					<h1 class="title has-text-centered">
 						<i class="fa fas fa-graduation-cap"></i>
 						<br>
-						Dive into learning today!
+						Join the community!
 					</h1>
 					<form action="{{ route('register') }}" method="POST">
 						@csrf

@@ -1,5 +1,5 @@
 .card {
-	margin-top: 150px;
+	margin-top: 10px;
 }
 
 a.muted:hover {
@@ -8,4 +8,8 @@ a.muted:hover {
 
 .columns {
 	margin-bottom: 0 !important;
+}
+
+.title {
+	color: $green-color !important;
 }
